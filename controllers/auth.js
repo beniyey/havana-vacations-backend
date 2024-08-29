@@ -61,10 +61,13 @@ function assignToken(user, res) {
     delete user.password
 
     const token = jwt.sign(user, process.env.PRIVATE_ACCESS_KEY)
+    const date = new Date();
+    date.setMonth(date.getMonth() + 1);
 
     res.cookie("token", token, {
         httpOnly: true,
-        secure: true
+        secure: true,
+        expires: date.toUTCString()
     })
 }
 
