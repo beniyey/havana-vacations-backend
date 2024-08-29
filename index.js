@@ -8,6 +8,8 @@ import jwt from "jsonwebtoken"
 import cors from "cors"
 import fs from "fs"
 
+process.env.PORT || (process.env.PORT = 3002)
+
 app.use(express.json())
 app.use(cookieParser())
 
@@ -49,6 +51,6 @@ server failed, error code: ${error.status} , with message: ${error.message}
 app.use(catchAll)
 
 
-app.listen(3002, () => {
-    console.log("listening on port 3002...")
+app.listen(process.env.PORT, () => {
+    console.log("listening on port " + process.env.PORT)
 })
