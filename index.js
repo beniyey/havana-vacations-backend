@@ -8,6 +8,10 @@ import jwt from "jsonwebtoken"
 import cors from "cors"
 import fs from "fs"
 import path from "path"
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 process.env.PORT || (process.env.PORT = 3002)
 
@@ -22,7 +26,7 @@ app.use(cors(corsOptions))
 
 if (true || process.env.NODE_ENV === "production") {
     app.get("/", (req, res) => {
-        console.log("sending file")
+        console.log("sending file", path.join(__dirname, "client/build", "index.html"))
         res.sendFile(path.join(__dirname, "client/build", "index.html"), (error)=>console.log(error))
     })
 }
