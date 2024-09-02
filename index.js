@@ -19,7 +19,7 @@ process.env.PORT || (process.env.PORT = 3002)
 app.use(express.json())
 app.use(cookieParser())
 
-app.use(express.static(path.join(__dirname, 'client/build')))
+app.use(express.static(path.join(__dirname, 'client')))
 
 const corsOptions = {
     origin: ["https://www.webies-media.com/"],
@@ -29,7 +29,7 @@ app.use(cors(corsOptions))
 
 if (process.env?.NODE_ENV === "production") {
     app.get("*", (req, res) => {
-        res.sendFile(path.join(__dirname,"index.html"))
+        res.sendFile(path.join(__dirname,"client/build/index.html"))
     })
 }
 
