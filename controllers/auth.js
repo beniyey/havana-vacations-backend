@@ -68,7 +68,7 @@ function assignToken(user, res) {
     res.cookie("token", token, {
         httpOnly: true,
         secure: true,
-        maxAge: date.toUTCString()
+        expire: new Date(Date.now() + 900000)
     })
 }
 
