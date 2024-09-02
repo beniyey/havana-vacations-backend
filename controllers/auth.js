@@ -68,7 +68,8 @@ function assignToken(user, res) {
     res.cookie("token", token, {
         httpOnly: true,
         secure: true,
-        expire: new Date(Date.now() + 900000)
+        expire: new Date(Date.now() + 900000),
+        domain: ".herokuapp.com"
     })
 }
 
