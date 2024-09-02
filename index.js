@@ -14,7 +14,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 const corsOptions = {
-    origin: ["http://localhost:3000"],
+    origin: ["http://localhost:3000", "https://66d5da4fafb80007c91e3a35--incandescent-syrniki-322870.netlify.app"],
     credentials: true
 }
 app.use(cors(corsOptions))
@@ -31,7 +31,6 @@ app.get("/get-user", (req, res) => {
         if (err) return res.sendStatus(401)
         else return res.send(payload)
     })
-
 })
 
 function catchAll(error, req, res, next) {
