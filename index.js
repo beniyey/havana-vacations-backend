@@ -32,6 +32,7 @@ if (true || process.env.NODE_ENV === "production") {
 }
 app.use("/auth", authRouter)
 app.use("/vacations", vacationsRouter)
+app.use(express.static(path.join(__dirname, 'client/build')))
 
 
 
