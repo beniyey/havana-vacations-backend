@@ -26,6 +26,10 @@ app.get("/", (req, res) => {
 app.use("/auth", authRouter)
 app.use("/vacations", vacationsRouter)
 
+app.get("*", (req,res)=>{
+    res.sendFile(process.cwd()+"frontend/index.html")
+})
+
 
 app.get("/get-user", (req, res) => {
     const token = req.cookies?.token
