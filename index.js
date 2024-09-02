@@ -22,9 +22,11 @@ app.use(cors(corsOptions))
 app.use("/auth", authRouter)
 app.use("/vacations", vacationsRouter)
 
-app.get("/", (req,res)=>{
-    res.sendFile(process.cwd()+"frontend/index.html")
-})
+if(process.env.NODE_ENV == "production"){    
+    app.get("*", (req,res)=>{
+        res.sendFile(process.cwd()+"client/build/index.html")
+    })
+}
 
 
 app.get("/get-user", (req, res) => {
