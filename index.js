@@ -23,7 +23,8 @@ app.use("/auth", authRouter)
 app.use("/vacations", vacationsRouter)
 
 app.get("/get-user", (req, res) => {
-    const token = req.cookies?.token
+    const authHeader = req.headers["authorization"]
+    const token = authHeader.split(" ")[1]
 
     if (!token) return res.sendStatus(401)
 
