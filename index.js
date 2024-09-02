@@ -20,14 +20,15 @@ const corsOptions = {
 }
 app.use(cors(corsOptions))
 
-app.use("/auth", authRouter)
-app.use("/vacations", vacationsRouter)
-
 if (true || process.env.NODE_ENV === "production") {
-    app.get("*", (req, res) => {
+    app.get("/", (req, res) => {
+        console.log("sending file")
         res.sendFile(path.join(__dirname, "client/build", "index.html"))
     })
 }
+app.use("/auth", authRouter)
+app.use("/vacations", vacationsRouter)
+
 
 
 app.get("/get-user", (req, res) => {
