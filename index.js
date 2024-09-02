@@ -19,8 +19,6 @@ process.env.PORT || (process.env.PORT = 3002)
 app.use(express.json())
 app.use(cookieParser())
 
-app.use(express.static(path.join(__dirname, 'client')))
-
 const corsOptions = {
     origin: ["https://www.webies-media.com/"],
     credentials: true
