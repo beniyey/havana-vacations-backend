@@ -23,7 +23,7 @@ app.use(cors(corsOptions))
 if (true || process.env.NODE_ENV === "production") {
     app.get("/", (req, res) => {
         console.log("sending file")
-        res.sendFile(path.join(__dirname, "client/build", "index.html"))
+        res.sendFile(path.join(__dirname, "client/build", "index.html"), (error)=>console.log(error))
     })
 }
 app.use("/auth", authRouter)
