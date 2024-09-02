@@ -1,8 +1,7 @@
 {
   "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "start": "node index.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
