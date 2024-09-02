@@ -7,30 +7,17 @@ import vacationsRouter from "./controllers/vacations.js"
 import jwt from "jsonwebtoken"
 import cors from "cors"
 import fs from "fs"
-import path from "path"
-import { dirname } from 'path';
-import { fileURLToPath } from "url"
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 process.env.PORT || (process.env.PORT = 3002)
 
 app.use(express.json())
 app.use(cookieParser())
-app.use(express.static(path.join(__dirname, "build")))
 
 const corsOptions = {
     origin: ["https://www.webies-media.com/"],
     credentials: true
 }
 app.use(cors(corsOptions))
-
-if (process.env?.NODE_ENV === "production") {
-    app.get("*", (req, res) => {
-        res.sendFile(path.join(__dirname,"build/index.html"))
-    })
-}
 
 app.use("/auth", authRouter)
 app.use("/vacations", vacationsRouter)
