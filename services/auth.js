@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken"
 
 export function isLoggedIn(req, res, next) {
+    console.log(req.cookies)
     const token = req.cookies?.token
 
     if (!token) res.sendStatus(401)
