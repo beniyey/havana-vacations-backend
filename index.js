@@ -7,6 +7,7 @@ import vacationsRouter from "./controllers/vacations.js"
 import jwt from "jsonwebtoken"
 import cors from "cors"
 import fs from "fs"
+import path from "path"
 
 process.env.PORT || (process.env.PORT = 3002)
 
@@ -22,9 +23,9 @@ app.use(cors(corsOptions))
 app.use("/auth", authRouter)
 app.use("/vacations", vacationsRouter)
 
-if(process.env.NODE_ENV == "production"){    
-    app.get("*", (req,res)=>{
-        res.sendFile(process.cwd()+"client/build/index.html")
+if (true || process.env.NODE_ENV === "production") {
+    app.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname, "client/build", "index.html"))
     })
 }
 
