@@ -19,23 +19,22 @@ process.env.PORT || (process.env.PORT = 3002)
 app.use(express.json())
 app.use(cookieParser())
 
+app.use(express.static(path.join(__dirname, 'client/build')))
+
 const corsOptions = {
     origin: ["https://www.webies-media.com/"],
     credentials: true
 }
 app.use(cors(corsOptions))
 
-if (true || process.env.NODE_ENV === "production") {
-    app.get("/", (req, res) => {
-        console.log("sending file", path.join(__dirname, "client/build", "index.html"))
-        res.sendFile(path.join( "client/build", "index.html"), (error)=>console.log(error))
+if (process.env?.NODE_ENV === "production") {
+    app.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname,"index.html"))
     })
 }
+
 app.use("/auth", authRouter)
 app.use("/vacations", vacationsRouter)
-app.use(express.static(path.join(__dirname, 'client/build')))
-
-
 
 app.get("/get-user", (req, res) => {
     const token = req.cookies?.token
@@ -48,7 +47,6 @@ app.get("/get-user", (req, res) => {
     })
 
 })
-
 
 function catchAll(error, req, res, next) {
     if (parseInt(error.status) >= 500) {
