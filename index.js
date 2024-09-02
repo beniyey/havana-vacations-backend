@@ -14,7 +14,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 const corsOptions = {
-    origin: ['https://havana-backend-app-735f5839e20d.herokuapp.com', "http://localhost:3000"],
+    origin: ["https://www.webies-media.com/"],
     credentials: true
 }
 app.use(cors(corsOptions))
