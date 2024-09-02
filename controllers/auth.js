@@ -69,7 +69,7 @@ function assignToken(user, res) {
         httpOnly: true,
         secure: true,
         expire: new Date(Date.now() + 900000),
-        domain: ".herokuapp.com"
+        domain: "https://havana-backend-app-735f5839e20d.herokuapp.com/"
     })
 }
 
