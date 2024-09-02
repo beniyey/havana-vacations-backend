@@ -19,14 +19,10 @@ const corsOptions = {
 }
 app.use(cors(corsOptions))
 
-app.get("/", (req, res) => {
-    res.send("hi, this is working")
-})
-
 app.use("/auth", authRouter)
 app.use("/vacations", vacationsRouter)
 
-app.get("*", (req,res)=>{
+app.get("/", (req,res)=>{
     res.sendFile(process.cwd()+"frontend/index.html")
 })
 
